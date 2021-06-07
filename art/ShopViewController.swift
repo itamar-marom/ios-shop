@@ -9,10 +9,12 @@ import UIKit
 
 class ShopViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    var data = [Product]()
+    
     @IBOutlet weak var shopListTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        data = Model.instance.getAllProducts()
         // Do any additional setup after loading the view.
     }
     
@@ -28,7 +30,7 @@ class ShopViewController: UIViewController, UITableViewDataSource, UITableViewDe
     */
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -37,7 +39,8 @@ class ShopViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = shopListTableView.dequeueReusableCell(withIdentifier: "shopListCell", for: indexPath) as! ShopListTableViewCell
-        cell.productName.text = "ESSENTIALS"
+        let product = data[indexPath.row]
+        cell.productName.text = product.name
         cell.productPrice.text = "400$"
         return cell
     }

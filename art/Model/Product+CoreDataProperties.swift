@@ -17,7 +17,12 @@ extension Product {
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var price: String?
+    @NSManaged public var price: Double
+    @NSManaged public var id: String?
+    @NSManaged public var ownBy: String?
+    @NSManaged public var image: String?
+    @NSManaged public var lastUpdated: String?
+    @NSManaged public var size: String?
 
 }
 
