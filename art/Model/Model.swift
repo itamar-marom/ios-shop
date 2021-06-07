@@ -16,13 +16,21 @@ class Model {
     
     var items = [Item]()
     
-    func getAllItems()->[Item] {
+    func getAllItems(callback:@escaping ([Item])->Void){
+        
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        do {
-            let item = try context.fetch(Item.fetchRequest()) as! [Item]
-            return item
-        } catch {
-            return [Item]()
+        
+        DispatchQueue.global().async {
+            
+            var data = [Item]()
+            do {
+                data = try context.fetch(Item.fetchRequest()) as! [Item]
+            } catch {
+            }
+            
+            DispatchQueue.main.async {
+                callback(data)
+            }
         }
     }
     

@@ -14,14 +14,16 @@ class ShopViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var shopListTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        data = Model.instance.getAllItems()
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        data = Model.instance.getAllItems()
+        Model.instance.getAllItems() { items in
+            self.data = items
+            self.shopListTableView.reloadData()
+        }
         shopListTableView.reloadData()
     }
 
