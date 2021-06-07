@@ -44,10 +44,10 @@
             </objects>
             <point key="canvasLocation" x="-299" y="278"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Item View Controller-->
         <scene sceneID="Dsr-OQ-RVM">
             <objects>
-                <viewController id="7sv-vf-3Sk" sceneMemberID="viewController">
+                <viewController id="7sv-vf-3Sk" customClass="AddItemViewController" customModule="art" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yTT-ml-8HS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -63,6 +63,9 @@
                                 <rect key="frame" x="160" y="642" width="95" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="CREATE"/>
+                                <connections>
+                                    <action selector="addItemClick:" destination="7sv-vf-3Sk" eventType="touchUpInside" id="0QO-dz-ZD8"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CREATION NAME" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JMp-Pd-5mT">
                                 <rect key="frame" x="118" y="455" width="179" height="34"/>
@@ -97,6 +100,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="Hsn-cb-ySu"/>
+                    <connections>
+                        <outlet property="itemId" destination="ULw-10-c9G" id="0gE-OX-h5a"/>
+                        <outlet property="itemName" destination="JMp-Pd-5mT" id="80I-jD-t77"/>
+                        <outlet property="itemPrice" destination="IuC-9N-rJ6" id="yaq-yd-hkI"/>
+                        <outlet property="itemSize" destination="E06-G8-4L4" id="vxW-9q-1A5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h6R-ro-mbb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -193,9 +202,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="productImage" destination="izn-Y8-4i0" id="bFl-mM-E3v"/>
-                                            <outlet property="productName" destination="dOr-pO-61e" id="xfY-M8-AWj"/>
-                                            <outlet property="productPrice" destination="Ayy-Or-oU2" id="Hxs-fi-VGd"/>
+                                            <outlet property="itemImage" destination="izn-Y8-4i0" id="YYp-JF-8Ve"/>
+                                            <outlet property="itemName" destination="dOr-pO-61e" id="DVV-iH-hmR"/>
+                                            <outlet property="itemPrice" destination="Ayy-Or-oU2" id="9ui-Ae-RO1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

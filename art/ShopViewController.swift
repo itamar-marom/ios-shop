@@ -9,15 +9,21 @@ import UIKit
 
 class ShopViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var data = [Product]()
+    var data = [Item]()
     
     @IBOutlet weak var shopListTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        data = Model.instance.getAllProducts()
+        data = Model.instance.getAllItems()
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        data = Model.instance.getAllItems()
+        shopListTableView.reloadData()
+    }
 
     /*
     // MARK: - Navigation
@@ -39,9 +45,9 @@ class ShopViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = shopListTableView.dequeueReusableCell(withIdentifier: "shopListCell", for: indexPath) as! ShopListTableViewCell
-        let product = data[indexPath.row]
-        cell.productName.text = product.name
-        cell.productPrice.text = "400$"
+        let item = data[indexPath.row]
+        cell.itemName.text = item.name
+        cell.itemPrice.text = "400$"
         return cell
     }
 }

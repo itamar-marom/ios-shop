@@ -9,9 +9,10 @@ import UIKit
 
 class ShopListTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var productImage: UIImageView!
-    @IBOutlet weak var productName: UILabel!
-    @IBOutlet weak var productPrice: UILabel!
+    
+    @IBOutlet weak var itemImage: UIImageView!
+    @IBOutlet weak var itemName: UILabel!
+    @IBOutlet weak var itemPrice: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
