@@ -17,15 +17,15 @@ class Model {
     let modelFirebase = ModelFirebase()
     
     func getAllItems(callback:@escaping ([Item])->Void){
-        
+        modelFirebase.getAllItems(callback: callback)
     }
     
     func add(item:Item) {
-        
+        modelFirebase.add(item: item)
     }
     
     func delete(item:Item) {
-        
+        modelFirebase.delete(item: item)
     }
     
     func getItem(byId: String)->Item?{

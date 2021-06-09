@@ -14,7 +14,7 @@ class AddItemViewController: UIViewController {
     @IBOutlet weak var itemPrice: UITextField!
     @IBOutlet weak var itemSize: UITextField!
     @IBAction func addItemClick(_ sender: Any) {
-        let item = Item.create(name: itemName.text!, size: itemSize.text!)
+        let item = Item.create(json: ["name": itemName.text!, "size": itemSize.text!])!
         Model.instance.add(item: item)
         navigationController?.popViewController(animated: true)
     }
