@@ -43,9 +43,10 @@ class AddItemViewController: UIViewController {
         super.viewDidLoad()
         
         if (isEditingMode) {
-            createEditHeader.text = "EDIT YOUR CREATION"
+            createEditHeader.text = "YOUR CREATION"
             craeteEditBtn.setTitle("EDIT", for: .normal)
-            itemId.text = editItemId
+            
+            itemId.isHidden = true
             itemName.text = editItemName
             itemSize.text = editItemSize
             itemPrice.text = editItemPrice
