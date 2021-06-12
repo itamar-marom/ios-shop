@@ -235,9 +235,17 @@
                         <viewLayoutGuide key="safeArea" id="Ipq-P8-8Yu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Shop" id="gGZ-QW-ErE"/>
+                    <navigationItem key="navigationItem" title="Shop" id="gGZ-QW-ErE">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="trash" catalog="system" id="p4X-1d-kdN">
+                            <connections>
+                                <action selector="trashAction:" destination="7O5-9W-ebr" id="S6T-Sx-KEF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="itemsList" destination="URK-tM-TUo" id="dgA-4C-bir"/>
                         <outlet property="shopListTableView" destination="URK-tM-TUo" id="bIM-cn-ZuW"/>
+                        <outlet property="trashBtn" destination="p4X-1d-kdN" id="wEm-he-J24"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iZN-96-wT7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -250,6 +258,7 @@
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
         <image name="tray" catalog="system" width="128" height="88"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

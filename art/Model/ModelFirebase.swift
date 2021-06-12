@@ -48,7 +48,7 @@ class ModelFirebase {
     
     func delete(item:Item, callback:@escaping ()->Void) {
         let db = Firestore.firestore()
-        db.collection("items").document("1").delete(){ err in
+        db.collection("items").document(item.id ?? "1").delete(){ err in
             if let err = err {
               print("Error writing document: \(err)")
             } else {

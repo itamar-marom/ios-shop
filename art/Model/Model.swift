@@ -46,8 +46,9 @@ class Model {
         }
     }
     
-    func delete(item:Item) {
+    func delete(item:Item, callback:@escaping ()->Void) {
         modelFirebase.delete(item: item){
+            callback()
             self.notificationItemList.post()
         }
     }
