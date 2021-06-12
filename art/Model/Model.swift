@@ -9,8 +9,27 @@ import Foundation
 import UIKit
 import CoreData
 
+class NotificationGeneral{
+    let name:String
+    init(_ name: String){
+        self.name = name
+    }
+    
+    func post(){
+        NotificationCenter.default.post(name: NSNotification.Name(name), object: self)
+    }
+
+    func observe(callback:@escaping ()->Void){
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(name), object: self, queue: nil) { (notification) in
+            callback()
+        }
+    }
+}
+
 class Model {
     static let instance = Model()
+    
+    public let notificationItemList = NotificationGeneral("notificationItemList")
     
     private init(){}
     
@@ -20,12 +39,17 @@ class Model {
         modelFirebase.getAllItems(callback: callback)
     }
     
-    func add(item:Item) {
-        modelFirebase.add(item: item)
+    func add(item:Item, callback:@escaping ()->Void) {
+        modelFirebase.add(item: item){
+            callback()
+            self.notificationItemList.post()
+        }
     }
     
     func delete(item:Item) {
-        modelFirebase.delete(item: item)
+        modelFirebase.delete(item: item){
+            self.notificationItemList.post()
+        }
     }
     
     func getItem(byId: String)->Item?{

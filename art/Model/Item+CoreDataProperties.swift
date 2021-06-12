@@ -15,9 +15,11 @@ extension Item {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Item> {
         return NSFetchRequest<Item>(entityName: "Item")
     }
-
+    
+    @NSManaged public var id: String?
     @NSManaged public var name: String?
     @NSManaged public var size: String?
+    @NSManaged public var price: String?
 
 }
 

@@ -14,25 +14,18 @@ class AddItemViewController: UIViewController {
     @IBOutlet weak var itemPrice: UITextField!
     @IBOutlet weak var itemSize: UITextField!
     @IBAction func addItemClick(_ sender: Any) {
-        let item = Item.create(json: ["name": itemName.text!, "size": itemSize.text!])!
-        Model.instance.add(item: item)
-        navigationController?.popViewController(animated: true)
+        let item = Item.create(json: ["id": itemId.text!, "name": itemName.text!, "size": itemSize.text!, "price": itemPrice.text!])!
+        Model.instance.add(item: item){
+            self.navigationController?.popViewController(animated: true)
+            let alert = UIAlertController(title: "Success", message: "item Saved!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: { action in}))
+            self.present(alert, animated: true, completion: nil)
+            self.tabBarController?.selectedIndex = 0
+
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7c5-rC-iUQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7c5-rC-iUQ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -59,14 +59,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1j1-bG-nze">
-                                <rect key="frame" x="160" y="642" width="95" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="CREATE"/>
-                                <connections>
-                                    <action selector="addItemClick:" destination="7sv-vf-3Sk" eventType="touchUpInside" id="0QO-dz-ZD8"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CREATION NAME" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JMp-Pd-5mT">
                                 <rect key="frame" x="118" y="455" width="179" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -95,6 +87,14 @@
                                 <rect key="frame" x="0.0" y="172" width="414" height="231"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1j1-bG-nze">
+                                <rect key="frame" x="160" y="664" width="95" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="CREATE"/>
+                                <connections>
+                                    <action selector="addItemClick:" destination="7sv-vf-3Sk" eventType="touchUpInside" id="0QO-dz-ZD8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="491-8v-xtU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -147,8 +147,9 @@
         <!--Shop-->
         <scene sceneID="dvX-4z-xeF">
             <objects>
-                <navigationController id="uVU-ik-tvc" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="uVU-ik-tvc" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Shop" image="bag" catalog="system" selectedImage="bag" id="eRN-KE-Ve5"/>
+                    <navigationItem key="navigationItem" id="r29-as-iQa"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QN6-RY-CUy">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -164,7 +165,7 @@
         <!--Shop-->
         <scene sceneID="YFO-RL-4sn">
             <objects>
-                <viewController id="7O5-9W-ebr" customClass="ShopViewController" customModule="art" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShopViewControllerID" modalPresentationStyle="fullScreen" id="7O5-9W-ebr" customClass="ShopViewController" customModule="art" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pb3-7T-YYE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -175,7 +176,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="shopListCell" rowHeight="100" id="dH6-1G-0bI" customClass="ShopListTableViewCell" customModule="art" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="100"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dH6-1G-0bI" id="f8C-oE-K58">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>

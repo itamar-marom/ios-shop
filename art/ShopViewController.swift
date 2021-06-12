@@ -14,17 +14,21 @@ class ShopViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var shopListTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        reloadData()        
+        Model.instance.notificationItemList.observe {
+            self.reloadData()
+        }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    func reloadData() {
         Model.instance.getAllItems() { items in
             self.data = items
             self.shopListTableView.reloadData()
         }
-        shopListTableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
 
     /*
@@ -38,6 +42,7 @@ class ShopViewController: UIViewController, UITableViewDataSource, UITableViewDe
     */
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(data)
         return data.count
     }
     
@@ -49,7 +54,7 @@ class ShopViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = shopListTableView.dequeueReusableCell(withIdentifier: "shopListCell", for: indexPath) as! ShopListTableViewCell
         let item = data[indexPath.row]
         cell.itemName.text = item.name
-        cell.itemPrice.text = "400$"
+        cell.itemPrice.text = (item.price ?? "0") + "$"
         return cell
     }
 }
