@@ -53,8 +53,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ADD NEW CREATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P95-Q9-Wrb">
-                                <rect key="frame" x="126" y="112" width="163" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="126" y="112" width="180" height="21"/>
+                                <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -101,6 +101,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Hsn-cb-ySu"/>
                     <connections>
+                        <outlet property="craeteEditBtn" destination="1j1-bG-nze" id="kNS-Ba-hIg"/>
+                        <outlet property="createEditHeader" destination="P95-Q9-Wrb" id="2Mj-x7-mqA"/>
                         <outlet property="itemId" destination="ULw-10-c9G" id="0gE-OX-h5a"/>
                         <outlet property="itemName" destination="JMp-Pd-5mT" id="80I-jD-t77"/>
                         <outlet property="itemPrice" destination="IuC-9N-rJ6" id="yaq-yd-hkI"/>
@@ -218,6 +220,7 @@
                                             <outlet property="itemImage" destination="izn-Y8-4i0" id="YYp-JF-8Ve"/>
                                             <outlet property="itemName" destination="dOr-pO-61e" id="DVV-iH-hmR"/>
                                             <outlet property="itemPrice" destination="Ayy-Or-oU2" id="9ui-Ae-RO1"/>
+                                            <segue destination="7sv-vf-3Sk" kind="show" identifier="EditItemSegueId" id="CEL-Yd-Rb7"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -253,6 +256,9 @@
             <point key="canvasLocation" x="589.85507246376812" y="-375"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="CEL-Yd-Rb7"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="bag" catalog="system" width="128" height="128"/>
         <image name="person" catalog="system" width="128" height="117"/>

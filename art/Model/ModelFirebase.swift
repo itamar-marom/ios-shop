@@ -58,6 +58,18 @@ class ModelFirebase {
         }
     }
     
+    func update(item:Item, callback:@escaping ()->Void) {
+        let db = Firestore.firestore()
+        db.collection("items").document(item.id ?? "1").updateData(["name" : item.name, "size": item.size, "price": item.price]){ err in
+            if let err = err {
+              print("Error writing document: \(err)")
+            } else {
+                print("document successfully writen")
+            }
+            callback()
+        }
+    }
+    
     func getItem(byId: String)->Item?{
         
         return nil

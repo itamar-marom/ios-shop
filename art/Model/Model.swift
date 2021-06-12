@@ -53,6 +53,13 @@ class Model {
         }
     }
     
+    func update(item:Item, callback:@escaping ()->Void) {
+        modelFirebase.update(item: item){
+            callback()
+            self.notificationItemList.post()
+        }
+    }
+    
     func getItem(byId: String)->Item?{
         
         return nil
