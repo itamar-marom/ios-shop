@@ -16,16 +16,22 @@ class AddItemViewController: UIViewController {
     @IBAction func addItemClick(_ sender: Any) {
         let item = Item.create(json: ["id": itemId.text!, "name": itemName.text!, "size": itemSize.text!, "price": itemPrice.text!])!
         Model.instance.add(item: item){
-            self.navigationController?.popViewController(animated: true)
+            self.initForm()
             let alert = UIAlertController(title: "Success", message: "item Saved!", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: { action in}))
             self.present(alert, animated: true, completion: nil)
             self.tabBarController?.selectedIndex = 0
-
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func initForm() {
+        itemId.text = ""
+        itemName.text = ""
+        itemSize.text = ""
+        itemPrice.text = ""
     }
     
 }
