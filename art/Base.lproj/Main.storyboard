@@ -59,6 +59,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1j1-bG-nze">
+                                <rect key="frame" x="160" y="664" width="95" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="CREATE"/>
+                                <connections>
+                                    <action selector="addItemClick:" destination="7sv-vf-3Sk" eventType="touchUpInside" id="0QO-dz-ZD8"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CREATION NAME" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JMp-Pd-5mT">
                                 <rect key="frame" x="118" y="455" width="179" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -87,22 +95,26 @@
                                 <rect key="frame" x="0.0" y="172" width="414" height="231"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1j1-bG-nze">
-                                <rect key="frame" x="160" y="664" width="95" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="CREATE"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Izf-he-c0m">
+                                <rect key="frame" x="311" y="368" width="59" height="37"/>
+                                <state key="normal" title="Button" image="camera.fill" catalog="system"/>
                                 <connections>
-                                    <action selector="addItemClick:" destination="7sv-vf-3Sk" eventType="touchUpInside" id="0QO-dz-ZD8"/>
+                                    <action selector="editImage:" destination="7sv-vf-3Sk" eventType="touchUpInside" id="HEz-tS-Paz"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="491-8v-xtU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Izf-he-c0m" secondAttribute="trailing" constant="20" id="i4t-1I-2lH"/>
+                            <constraint firstItem="Izf-he-c0m" firstAttribute="top" secondItem="491-8v-xtU" secondAttribute="top" constant="280" id="ijt-bO-Qfe"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Hsn-cb-ySu"/>
                     <connections>
                         <outlet property="craeteEditBtn" destination="1j1-bG-nze" id="kNS-Ba-hIg"/>
                         <outlet property="createEditHeader" destination="P95-Q9-Wrb" id="2Mj-x7-mqA"/>
+                        <outlet property="image" destination="dOw-h4-BhN" id="T6c-ug-RPz"/>
                         <outlet property="itemId" destination="ULw-10-c9G" id="0gE-OX-h5a"/>
                         <outlet property="itemName" destination="JMp-Pd-5mT" id="80I-jD-t77"/>
                         <outlet property="itemPrice" destination="IuC-9N-rJ6" id="yaq-yd-hkI"/>
@@ -261,6 +273,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bag" catalog="system" width="128" height="128"/>
+        <image name="camera.fill" catalog="system" width="128" height="94"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" catalog="system" width="128" height="113"/>

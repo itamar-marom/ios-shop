@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddItemViewController: UIViewController {
+class AddItemViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
 
     @IBOutlet weak var itemId: UITextField!
     @IBOutlet weak var itemName: UITextField!
@@ -15,6 +15,7 @@ class AddItemViewController: UIViewController {
     @IBOutlet weak var itemSize: UITextField!
     @IBOutlet weak var createEditHeader: UILabel!
     @IBOutlet weak var craeteEditBtn: UIButton!
+    @IBOutlet weak var image: UIImageView!
     
     var editItemId:String = ""
     var editItemName:String = ""
@@ -58,6 +59,30 @@ class AddItemViewController: UIViewController {
         itemName.text = ""
         itemSize.text = ""
         itemPrice.text = ""
+    }
+    
+    @IBAction func editImage(_ sender: Any) {
+        if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera)) {
+         let imagePicker = UIImagePickerController()
+         imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerController.SourceType.camera;
+         imagePicker.allowsEditing = true
+         self.present(imagePicker, animated: true, completion: nil)
+        } else {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+               imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary;
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    var newImage: UIImage?
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        newImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        self.image.image = newImage
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
