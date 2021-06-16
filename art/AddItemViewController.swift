@@ -23,14 +23,39 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate &
     var editItemPrice:String = ""
     var isEditingMode:Bool = false
     
+    var newImage: UIImage?
+    
+    
+//    @IBAction func save(_ sender: Any) {
+//        if let image = image{
+//            Model.instance.saveImage(image: image) { (url) in
+//                self.saveStudent(url: url)
+//            }
+//        }else{
+//            self.saveStudent(url: "")
+//        }
+//    }
+    
     @IBAction func addItemClick(_ sender: Any) {
+        if newImage != nil{
+            Model.instance.saveImage(image: newImage!) { (url) in
+                self.saveItem(url: url)
+            }
+        }else{
+            self.saveItem(url: "")
+        }
+
+    }
+    
+    func saveItem(url:String) {
         if (isEditingMode){
-            let item = Item.create(json: ["id": editItemId, "name": itemName.text!, "size": itemSize.text!, "price": itemPrice.text!])!
+            let item = Item.create(json: ["id": editItemId, "name": itemName.text!, "size": itemSize.text!, "price": itemPrice.text!, "image": url])!
             Model.instance.update(item: item){
                 self.navigationController?.popViewController(animated: true)
             }
         } else {
-            let item = Item.create(json: ["id": itemId.text!, "name": itemName.text!, "size": itemSize.text!, "price": itemPrice.text!])!
+            let item = Item.create(json: ["id": itemId.text, "name": itemName.text!, "size": itemSize.text!, "price": itemPrice.text!, "image": url])!
+            print(item)
             Model.instance.add(item: item){
                 self.initForm()
                 let alert = UIAlertController(title: "Success", message: "item Saved!", preferredStyle: UIAlertController.Style.alert)
@@ -40,6 +65,7 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate &
             }
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -77,11 +103,13 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate &
         }
     }
     
-    var newImage: UIImage?
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         newImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         self.image.image = newImage
+        print("new Image")
+        print(self.newImage)
+        print("imageee")
+        print(self.image.image)
         self.dismiss(animated: true, completion: nil)
     }
     

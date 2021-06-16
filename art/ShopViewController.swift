@@ -69,6 +69,10 @@ class ShopViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let item = data[indexPath.row]
         cell.itemName.text = item.name
         cell.itemPrice.text = (item.price ?? "0") + "$"
+        
+        let url = item.image
+        
+        
         return cell
     }
     

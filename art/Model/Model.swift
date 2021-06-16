@@ -61,7 +61,10 @@ class Model {
     }
     
     func getItem(byId: String)->Item?{
-        
         return nil
+    }
+    
+    func saveImage(image:UIImage, callback:@escaping (String)->Void){
+        ModelFirebase.saveImage(image: image, callback: callback)
     }
 }

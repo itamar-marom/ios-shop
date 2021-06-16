@@ -20,6 +20,7 @@ extension Item {
     @NSManaged public var name: String?
     @NSManaged public var size: String?
     @NSManaged public var price: String?
+    @NSManaged public var image: String?
 
 }
 

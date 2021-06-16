@@ -13,13 +13,14 @@ import UIKit
 @objc(Item)
 public class Item: NSManagedObject {
     
-    static func create(id: String, name: String, size:String, price:String)->Item{
+    static func create(id: String, name: String, size:String, price:String, image:String)->Item{
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let item = Item(context: context)
         item.id = id
         item.name = name
         item.size = size
         item.price = price
+        item.image = image
         return item
     }
     
@@ -30,6 +31,7 @@ public class Item: NSManagedObject {
         item.name = json["name"] as? String
         item.size = json["size"] as? String
         item.price = json["price"] as? String
+        item.image = json["image"] as? String
         return item
     }
     
@@ -39,6 +41,7 @@ public class Item: NSManagedObject {
         json["name"] = name!
         json["size"] = size!
         json["price"] = price!
+        json["image"] = image!
 //        if let image = image {
 //            json["image"] = image
 //        } else {
