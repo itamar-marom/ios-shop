@@ -19,5 +19,7 @@ target 'art' do
   target 'artUITests' do
     # Pods for testing
   end
+  
+  pod 'Kingfisher', '~> 6.3'
 
 end

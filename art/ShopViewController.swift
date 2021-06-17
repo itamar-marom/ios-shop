@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ShopViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -70,8 +71,8 @@ class ShopViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.itemName.text = item.name
         cell.itemPrice.text = (item.price ?? "0") + "$"
         
-        let url = item.image
-        
+        let url = URL(string: item.image ?? "")
+        cell.itemImage.kf.setImage(with: url)
         
         return cell
     }
@@ -107,6 +108,7 @@ class ShopViewController: UIViewController, UITableViewDataSource, UITableViewDe
             destinationVC.editItemName = itemSelected.name ?? ""
             destinationVC.editItemPrice = itemSelected.price ?? ""
             destinationVC.editItemSize = itemSelected.size ?? ""
+            destinationVC.editedImage = itemSelected.image ?? ""
             
         }
     }

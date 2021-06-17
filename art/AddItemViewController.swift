@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class AddItemViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
 
@@ -21,20 +22,10 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate &
     var editItemName:String = ""
     var editItemSize:String = ""
     var editItemPrice:String = ""
+    var editedImage:String = ""
     var isEditingMode:Bool = false
     
     var newImage: UIImage?
-    
-    
-//    @IBAction func save(_ sender: Any) {
-//        if let image = image{
-//            Model.instance.saveImage(image: image) { (url) in
-//                self.saveStudent(url: url)
-//            }
-//        }else{
-//            self.saveStudent(url: "")
-//        }
-//    }
     
     @IBAction func addItemClick(_ sender: Any) {
         if newImage != nil{
@@ -55,7 +46,6 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate &
             }
         } else {
             let item = Item.create(json: ["id": itemId.text, "name": itemName.text!, "size": itemSize.text!, "price": itemPrice.text!, "image": url])!
-            print(item)
             Model.instance.add(item: item){
                 self.initForm()
                 let alert = UIAlertController(title: "Success", message: "item Saved!", preferredStyle: UIAlertController.Style.alert)
@@ -77,6 +67,7 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate &
             itemName.text = editItemName
             itemSize.text = editItemSize
             itemPrice.text = editItemPrice
+            image.kf.setImage(with: URL(string: editedImage))
         }
     }
     
@@ -106,10 +97,6 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate &
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         newImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         self.image.image = newImage
-        print("new Image")
-        print(self.newImage)
-        print("imageee")
-        print(self.image.image)
         self.dismiss(animated: true, completion: nil)
     }
     
