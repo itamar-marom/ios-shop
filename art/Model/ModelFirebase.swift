@@ -13,26 +13,48 @@ class ModelFirebase {
         FirebaseApp.configure()
     }
     
-    func getAllItems(callback:@escaping ([Item])->Void){
+    func getAllItems(since: Int64, callback:@escaping ([Item])->Void){
         let db = Firestore.firestore()
-        db.collection("items").getDocuments { snapshot, error in
-            if let error = error {
-                print("Error getting documents: \(error)")
-              } else {
-                if let snapshot = snapshot {
-                    var items = [Item]()
-                    for snap in snapshot.documents {
-                        if let item = Item.create(json: snap.data()) {
+        db.collection("items")
+            .order(by: "lastUpdated")
+            .start(at: [Timestamp(seconds: since, nanoseconds: 0)])
+            .getDocuments { (snapshot, err) in
+            var items = [Item]()
+            if let err = err{
+                print("Error reading document: \(err)")
+            }else{
+                if let snapshot = snapshot{
+                    for snap in snapshot.documents{
+                        if let item = Item.create(json:snap.data()){
                             items.append(item)
                         }
                     }
-                    callback(items)
-                    return
                 }
-              }
-            callback([Item]())
+            }
+            callback(items)
         }
     }
+    
+//    func getAllItems(callback:@escaping ([Item])->Void){
+//        let db = Firestore.firestore()
+//        db.collection("items").getDocuments { snapshot, error in
+//            if let error = error {
+//                print("Error getting documents: \(error)")
+//              } else {
+//                if let snapshot = snapshot {
+//                    var items = [Item]()
+//                    for snap in snapshot.documents {
+//                        if let item = Item.create(json: snap.data()) {
+//                            items.append(item)
+//                        }
+//                    }
+//                    callback(items)
+//                    return
+//                }
+//              }
+//            callback([Item]())
+//        }
+//    }
     
     func add(item:Item, callback:@escaping ()->Void) {
         let db = Firestore.firestore()

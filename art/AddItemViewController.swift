@@ -28,8 +28,8 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate &
     var newImage: UIImage?
     
     @IBAction func addItemClick(_ sender: Any) {
-        if newImage != nil{
-            Model.instance.saveImage(image: newImage!) { (url) in
+        if self.image.image != nil{
+            Model.instance.saveImage(image: self.image.image!) { (url) in
                 self.saveItem(url: url)
             }
         }else{
@@ -41,7 +41,7 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate &
     func saveItem(url:String) {
         if (isEditingMode){
             let item = Item.create(json: ["id": editItemId, "name": itemName.text!, "size": itemSize.text!, "price": itemPrice.text!, "image": url])!
-            Model.instance.update(item: item){
+            Model.instance.add(item: item){
                 self.navigationController?.popViewController(animated: true)
             }
         } else {
@@ -76,6 +76,7 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate &
         itemName.text = ""
         itemSize.text = ""
         itemPrice.text = ""
+        image.image = UIImage(named: "tray")
     }
     
     @IBAction func editImage(_ sender: Any) {
