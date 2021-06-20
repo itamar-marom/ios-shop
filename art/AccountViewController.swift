@@ -9,6 +9,7 @@ import UIKit
 
 class AccountViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var trashBtn: UIBarButtonItem!
     @IBOutlet weak var UserNameLabel: UILabel!
     
     @IBOutlet weak var UserNameTextField: UITextField!
@@ -22,6 +23,18 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     var data = [Item]()
+    var trashFlag = false
+    
+    @IBAction func trashAction(_ sender: Any) {
+        trashFlag = !trashFlag
+        ItemsListTableView.setEditing(trashFlag, animated: true)
+        if (trashFlag) {
+            trashBtn.image = UIImage(systemName: "multiply.circle.fill")
+            self.navigationItem.rightBarButtonItem = trashBtn
+        } else {
+            trashBtn.image = UIImage(systemName: "trash")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,5 +87,20 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("")
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return trashFlag
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete  {
+            let i = indexPath.row
+            Model.instance.delete(item: data[i]){
+                let alert = UIAlertController(title: "Success", message: "item Deleted!", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: { action in}))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
     }
 }
