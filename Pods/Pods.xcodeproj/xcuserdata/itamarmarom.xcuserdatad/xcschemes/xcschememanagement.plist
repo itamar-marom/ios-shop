@@ -95,6 +95,11 @@
 			<key>orderHint</key>
 			<integer>12</integer>
 		</dict>
+		<key>Kingfisher.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>23</integer>
+		</dict>
 		<key>Pods-art-artUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>

@@ -10,6 +10,8 @@
 		69104405F70528F79C7FFDFF /* Pods_art.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E28B3C26495BA8903D6DD067 /* Pods_art.framework */; };
 		73FA3D480DA47A7F16E106BC /* Pods_art_artUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F595D08D358FDB2451A3B6F8 /* Pods_art_artUITests.framework */; };
 		84D70F7B267BAC9200A6ABF5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 84D70F7A267BAC9200A6ABF5 /* Kingfisher */; };
+		AD1F23D1267FB0D900515391 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1F23D0267FB0D900515391 /* AccountViewController.swift */; };
+		AD1F23D3267FB39D00515391 /* AccountItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1F23D2267FB39D00515391 /* AccountItemTableViewCell.swift */; };
 		AD53DE87266F560100AA81E3 /* ModelFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD53DE86266F560100AA81E3 /* ModelFirebase.swift */; };
 		ADA0CFE7266EB72A00F1F958 /* ItemModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ADA0CFE5266EB72A00F1F958 /* ItemModel.xcdatamodeld */; };
 		ADA0CFEA266EB75A00F1F958 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA0CFE8266EB75A00F1F958 /* Item+CoreDataClass.swift */; };
@@ -55,6 +57,8 @@
 		7978FEE22AE9455DC64CEEC5 /* Pods-art-artUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-art-artUITests.release.xcconfig"; path = "Target Support Files/Pods-art-artUITests/Pods-art-artUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7D960F12BE30B7015EB8546D /* Pods_artTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_artTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C22B8A8E5DC4BE679A84102 /* Pods-artTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-artTests.release.xcconfig"; path = "Target Support Files/Pods-artTests/Pods-artTests.release.xcconfig"; sourceTree = "<group>"; };
+		AD1F23D0267FB0D900515391 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		AD1F23D2267FB39D00515391 /* AccountItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountItemTableViewCell.swift; sourceTree = "<group>"; };
 		AD53DE86266F560100AA81E3 /* ModelFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFirebase.swift; sourceTree = "<group>"; };
 		ADA0CFE6266EB72A00F1F958 /* ItemModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ItemModel.xcdatamodel; sourceTree = "<group>"; };
 		ADA0CFE8266EB75A00F1F958 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -164,6 +168,8 @@
 				ADBE3CE6266E9F02009C89BD /* Info.plist */,
 				ADA0CFF0266F4E1600F1F958 /* GoogleService-Info.plist */,
 				ADBE3CDE266E9F02009C89BD /* art.xcdatamodeld */,
+				AD1F23D0267FB0D900515391 /* AccountViewController.swift */,
+				AD1F23D2267FB39D00515391 /* AccountItemTableViewCell.swift */,
 			);
 			path = art;
 			sourceTree = "<group>";
@@ -455,11 +461,13 @@
 			files = (
 				ADBE3CDA266E9F02009C89BD /* ViewController.swift in Sources */,
 				ADBE3CD6266E9F02009C89BD /* AppDelegate.swift in Sources */,
+				AD1F23D1267FB0D900515391 /* AccountViewController.swift in Sources */,
 				ADBE3D13266EA2EF009C89BD /* ShopViewController.swift in Sources */,
 				ADA0CFEA266EB75A00F1F958 /* Item+CoreDataClass.swift in Sources */,
 				AD53DE87266F560100AA81E3 /* ModelFirebase.swift in Sources */,
 				ADA0CFEB266EB75A00F1F958 /* Item+CoreDataProperties.swift in Sources */,
 				ADBE3CD8266E9F02009C89BD /* SceneDelegate.swift in Sources */,
+				AD1F23D3267FB39D00515391 /* AccountItemTableViewCell.swift in Sources */,
 				ADBE3D15266EA5A4009C89BD /* ShopListTableViewCell.swift in Sources */,
 				ADBE3CE0266E9F02009C89BD /* art.xcdatamodeld in Sources */,
 				ADA0CFE7266EB72A00F1F958 /* ItemModel.xcdatamodeld in Sources */,
