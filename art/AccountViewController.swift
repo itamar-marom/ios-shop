@@ -19,6 +19,10 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var ItemsListTableView: UITableView!
     
+    @IBAction func noType(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
     @IBAction func SaveInfoButton(_ sender: Any) {
         
         print("ACTION: update information:")
@@ -102,8 +106,8 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
         if let user = user {
             print("-- AUTH: User logged in")
             UserNameLabel.text = user.displayName
-            UserNameTextField.text = user.displayName
-            USerEmailTextField.text = user.email
+            UserNameTextField.attributedPlaceholder = NSAttributedString(string: user.displayName!)
+            USerEmailTextField.attributedPlaceholder = NSAttributedString(string: user.email!)
         } else {
             print("-- AUTH: user not logged in")
             performSegue(withIdentifier: "fromAccountToLogin", sender: self)

@@ -14,6 +14,9 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var userPassword: UITextField!
     
+    @IBAction func noType(_ sender: Any) {
+        view.endEditing(true)
+    }
     @IBAction func joinButton(_ sender: Any) {
         print("ACTION: register user:")
         print("-- email: " + userEmail.text!)

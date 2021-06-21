@@ -53,7 +53,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADD NEW CREATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P95-Q9-Wrb">
-                                <rect key="frame" x="10" y="108" width="394" height="22"/>
+                                <rect key="frame" x="10" y="108" width="394" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -197,7 +197,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9fe-j2-Qzr">
-                                <rect key="frame" x="0.0" y="373" width="414" height="434"/>
+                                <rect key="frame" x="0.0" y="372.5" width="414" height="380.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccountListCell" rowHeight="100" id="0UX-8H-R8Y" customClass="AccountItemTableViewCell" customModule="art" customModuleProvider="target">
@@ -271,6 +271,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4b2-jF-SDO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="9fe-j2-Qzr" firstAttribute="trailing" secondItem="4b2-jF-SDO" secondAttribute="trailing" id="0XQ-Q0-X4y"/>
                             <constraint firstItem="jCP-MH-iRd" firstAttribute="top" secondItem="9fe-j2-Qzr" secondAttribute="bottom" constant="10" id="2Ag-Wi-3zh"/>
@@ -299,6 +300,9 @@
                             <constraint firstItem="4b2-jF-SDO" firstAttribute="trailing" secondItem="jIC-x1-zer" secondAttribute="trailing" constant="30" id="zWD-fb-4on"/>
                             <constraint firstItem="CWS-Rd-zuC" firstAttribute="leading" secondItem="4b2-jF-SDO" secondAttribute="leading" constant="120" id="zYE-X3-XPG"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="c3m-1d-QUp" appends="YES" id="0uN-f3-x26"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Account" id="64s-7i-nK7">
                         <barButtonItem key="rightBarButtonItem" title="Delete" image="trash" catalog="system" id="j2Z-sr-O2O">
@@ -318,6 +322,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tyk-D6-Sz2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="c3m-1d-QUp">
+                    <connections>
+                        <action selector="noType:" destination="Z1M-r2-gaZ" id="Oes-Ta-9Sk"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="589.85507246376812" y="983.70535714285711"/>
         </scene>
@@ -352,7 +361,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQZ-JA-kAN">
-                                <rect key="frame" x="50" y="391.5" width="314" height="30"/>
+                                <rect key="frame" x="150" y="391.5" width="114" height="30"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="loginButton:" destination="Nmv-2i-93k" eventType="touchUpInside" id="coR-Ja-oOD"/>
@@ -374,8 +383,9 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CGf-ZS-kVf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="CGf-ZS-kVf" firstAttribute="trailing" secondItem="uQZ-JA-kAN" secondAttribute="trailing" constant="50" id="1HG-5o-Qek"/>
+                            <constraint firstItem="CGf-ZS-kVf" firstAttribute="trailing" secondItem="uQZ-JA-kAN" secondAttribute="trailing" constant="150" id="1HG-5o-Qek"/>
                             <constraint firstItem="fLt-O1-weD" firstAttribute="leading" secondItem="L3T-CK-MLY" secondAttribute="trailing" constant="10" id="Ds2-VE-S8i"/>
                             <constraint firstItem="2cX-GC-XVf" firstAttribute="leading" secondItem="CGf-ZS-kVf" secondAttribute="leading" constant="20" id="GxU-56-ncU"/>
                             <constraint firstItem="L3T-CK-MLY" firstAttribute="top" secondItem="uQZ-JA-kAN" secondAttribute="bottom" constant="30" id="HdL-tk-Fj0"/>
@@ -389,12 +399,15 @@
                             <constraint firstItem="CGf-ZS-kVf" firstAttribute="trailing" secondItem="yoT-F9-6G7" secondAttribute="trailing" constant="20" id="dRm-EJ-hsm"/>
                             <constraint firstItem="CGf-ZS-kVf" firstAttribute="trailing" secondItem="imI-yh-6iJ" secondAttribute="trailing" constant="50" id="fLG-0w-6zH"/>
                             <constraint firstItem="lUg-9N-Z1f" firstAttribute="top" secondItem="2cX-GC-XVf" secondAttribute="bottom" constant="30" id="h8O-AW-KLb"/>
-                            <constraint firstItem="uQZ-JA-kAN" firstAttribute="leading" secondItem="CGf-ZS-kVf" secondAttribute="leading" constant="50" id="iGy-kK-V0c"/>
+                            <constraint firstItem="uQZ-JA-kAN" firstAttribute="leading" secondItem="CGf-ZS-kVf" secondAttribute="leading" constant="150" id="iGy-kK-V0c"/>
                             <constraint firstItem="yoT-F9-6G7" firstAttribute="top" secondItem="CGf-ZS-kVf" secondAttribute="top" constant="100" id="kwQ-JE-k79"/>
                             <constraint firstItem="imI-yh-6iJ" firstAttribute="top" secondItem="lUg-9N-Z1f" secondAttribute="bottom" constant="20" id="sYd-rj-Se3"/>
                             <constraint firstItem="imI-yh-6iJ" firstAttribute="leading" secondItem="CGf-ZS-kVf" secondAttribute="leading" constant="50" id="sp9-yv-JUC"/>
                             <constraint firstItem="uQZ-JA-kAN" firstAttribute="top" secondItem="imI-yh-6iJ" secondAttribute="bottom" constant="30" id="tbV-XV-jl6"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Zes-7o-qet" appends="YES" id="ygp-sp-up3"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="aLP-bF-hOU"/>
                     <connections>
@@ -403,6 +416,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ixq-yY-m5q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Zes-7o-qet">
+                    <connections>
+                        <action selector="noType:" destination="Nmv-2i-93k" id="ucv-lo-k8Z"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1690" y="729"/>
         </scene>
@@ -442,7 +460,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cvt-dr-Bah">
-                                <rect key="frame" x="30" y="445.5" width="354" height="30"/>
+                                <rect key="frame" x="150" y="445.5" width="114" height="30"/>
                                 <state key="normal" title="Join"/>
                                 <connections>
                                     <action selector="joinButton:" destination="rpt-Yc-KG7" eventType="touchUpInside" id="TPy-iY-gjo"/>
@@ -451,26 +469,30 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="06h-VI-4rU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="p8M-N0-rTv" firstAttribute="top" secondItem="qod-4C-yJH" secondAttribute="bottom" constant="30" id="4Au-sS-8XL"/>
                             <constraint firstItem="cvt-dr-Bah" firstAttribute="top" secondItem="7x0-xW-RBu" secondAttribute="bottom" constant="30" id="9DP-q6-708"/>
                             <constraint firstItem="9XW-39-MKi" firstAttribute="leading" secondItem="sK7-my-ZjH" secondAttribute="leading" constant="20" id="BEi-RS-mx8"/>
                             <constraint firstItem="06h-VI-4rU" firstAttribute="trailing" secondItem="p8M-N0-rTv" secondAttribute="trailing" constant="50" id="Ihc-RQ-khp"/>
                             <constraint firstItem="qod-4C-yJH" firstAttribute="leading" secondItem="06h-VI-4rU" secondAttribute="leading" constant="20" id="LOU-zz-cNh"/>
-                            <constraint firstItem="06h-VI-4rU" firstAttribute="trailing" secondItem="cvt-dr-Bah" secondAttribute="trailing" constant="30" id="Oep-hr-Jv4"/>
+                            <constraint firstItem="06h-VI-4rU" firstAttribute="trailing" secondItem="cvt-dr-Bah" secondAttribute="trailing" constant="150" id="Oep-hr-Jv4"/>
                             <constraint firstItem="7x0-xW-RBu" firstAttribute="top" secondItem="blc-j4-jNR" secondAttribute="bottom" constant="20" id="ReB-IG-U4U"/>
                             <constraint firstItem="9XW-39-MKi" firstAttribute="top" secondItem="06h-VI-4rU" secondAttribute="top" constant="100" id="TLT-9f-Rot"/>
                             <constraint firstItem="06h-VI-4rU" firstAttribute="trailing" secondItem="qod-4C-yJH" secondAttribute="trailing" constant="20" id="VoV-zu-sPW"/>
                             <constraint firstItem="06h-VI-4rU" firstAttribute="trailing" secondItem="7x0-xW-RBu" secondAttribute="trailing" constant="50" id="XtU-dw-En3"/>
                             <constraint firstItem="06h-VI-4rU" firstAttribute="trailing" secondItem="9XW-39-MKi" secondAttribute="trailing" constant="20" id="ZBi-le-RWM"/>
                             <constraint firstItem="7x0-xW-RBu" firstAttribute="leading" secondItem="06h-VI-4rU" secondAttribute="leading" constant="50" id="bZX-2E-cdv"/>
-                            <constraint firstItem="cvt-dr-Bah" firstAttribute="leading" secondItem="06h-VI-4rU" secondAttribute="leading" constant="30" id="fiZ-AK-WQD"/>
+                            <constraint firstItem="cvt-dr-Bah" firstAttribute="leading" secondItem="06h-VI-4rU" secondAttribute="leading" constant="150" id="fiZ-AK-WQD"/>
                             <constraint firstItem="qod-4C-yJH" firstAttribute="top" secondItem="9XW-39-MKi" secondAttribute="bottom" constant="20" id="fxb-f9-9Z6"/>
                             <constraint firstItem="06h-VI-4rU" firstAttribute="trailing" secondItem="blc-j4-jNR" secondAttribute="trailing" constant="50" id="gr2-5P-Nt3"/>
                             <constraint firstItem="blc-j4-jNR" firstAttribute="leading" secondItem="06h-VI-4rU" secondAttribute="leading" constant="50" id="mdr-25-agG"/>
                             <constraint firstItem="blc-j4-jNR" firstAttribute="top" secondItem="p8M-N0-rTv" secondAttribute="bottom" constant="20" id="n6a-uo-3tG"/>
                             <constraint firstItem="p8M-N0-rTv" firstAttribute="leading" secondItem="06h-VI-4rU" secondAttribute="leading" constant="50" id="wUd-3G-ubK"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="LVL-ob-Qe4" appends="YES" id="VHV-MU-fKT"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Register" id="vGq-TV-hFD"/>
                     <connections>
@@ -480,6 +502,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bsP-si-jfx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="LVL-ob-Qe4">
+                    <connections>
+                        <action selector="noType:" destination="rpt-Yc-KG7" id="WMu-I7-BVw"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2710" y="729"/>
         </scene>

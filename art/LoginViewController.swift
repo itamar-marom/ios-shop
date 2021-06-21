@@ -13,6 +13,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userEmail: UITextField!
     @IBOutlet weak var userPassword: UITextField!
     
+    @IBAction func noType(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
     @IBAction func loginButton(_ sender: Any) {
         print("ACTION: login user:")
         print("-- email: " + userEmail.text!)
