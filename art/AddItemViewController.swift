@@ -42,7 +42,7 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate &
         if (isEditingMode){
             let item = Item.create(json: ["id": editItemId, "name": itemName.text!, "size": itemSize.text!, "price": itemPrice.text!, "image": url])!
             Model.instance.add(item: item){
-                self.navigationController?.popViewController(animated: true)
+                self.navigationController?.popToRootViewController(animated: true)
             }
         } else {
             let item = Item.create(json: ["id": itemId.text, "name": itemName.text!, "size": itemSize.text!, "price": itemPrice.text!, "image": url])!
@@ -52,6 +52,7 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate &
                 alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: { action in}))
                 self.present(alert, animated: true, completion: nil)
                 self.tabBarController?.selectedIndex = 0
+
             }
         }
     }

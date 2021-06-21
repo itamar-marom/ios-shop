@@ -97,18 +97,18 @@ class ShopViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "EditItemSegueId") {
+        if (segue.identifier == "viewItemSegue") {
             let selectedIndex = itemsList.indexPath(for: sender as! UITableViewCell)
             let itemSelected = data[selectedIndex?.row ?? 0]
             
             // Create a new variable to store the instance of PlayerTableViewController
-            let destinationVC:AddItemViewController = segue.destination as! AddItemViewController
-            destinationVC.isEditingMode = true
-            destinationVC.editItemId = itemSelected.id ?? ""
-            destinationVC.editItemName = itemSelected.name ?? ""
-            destinationVC.editItemPrice = itemSelected.price ?? ""
-            destinationVC.editItemSize = itemSelected.size ?? ""
-            destinationVC.editedImage = itemSelected.image ?? ""
+            let destinationVC:ViewItemViewController = segue.destination as! ViewItemViewController
+            destinationVC.itemId = itemSelected.id ?? ""
+            destinationVC.itemName = itemSelected.name ?? ""
+            destinationVC.itemPrice = itemSelected.price ?? ""
+            destinationVC.itemSize = itemSelected.size ?? ""
+            destinationVC.itemEmail = "fix@gmail.com"
+            destinationVC.imageUrl = itemSelected.image ?? ""
             
         }
     }
