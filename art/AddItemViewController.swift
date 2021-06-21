@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import Firebase
 
 class AddItemViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
 
@@ -69,6 +70,18 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate &
             itemSize.text = editItemSize
             itemPrice.text = editItemPrice
             image.kf.setImage(with: URL(string: editedImage))
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let user = Auth.auth().currentUser
+        print("ACTION: authenticating user")
+        if let user = user {
+            print("-- AUTH: User logged in")
+        } else {
+            print("-- AUTH: user not logged in")
+            performSegue(withIdentifier: "fromCreateToLogin", sender: self)
         }
     }
     
