@@ -23,11 +23,13 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
         
         print("ACTION: update information:")
         
+        let user = Auth.auth().currentUser
+        
         let newName = UserNameTextField.text
         let newEmail = USerEmailTextField.text
         let newPassword = UserPasswordTextField.text
         
-        if newName != "" {
+        if (newName != "") && (newName != user?.displayName) {
             print("-- UPDATE: name: " + newName!)
             let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
             changeRequest?.displayName = newName
@@ -36,22 +38,30 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
         
-        if newEmail != "" {
+        if (newEmail != "") && (newEmail != user?.email) {
             print("-- UPDATE: email: " + newEmail! )
             Auth.auth().currentUser?.updateEmail(to: newEmail!) { (error) in
                 print("---- ERROR: email: failed to update")
             }
         }
         
-        if newPassword != "" {
+        if (newPassword != "") {
             print("-- UPDATE: password: " + newPassword! )
             Auth.auth().currentUser?.updatePassword(to: newPassword!) { (error) in
-                print("---- ERROR: password: failed to update")
+                if let error = error {
+                    print("---- ERROR: password: failed to update \(error)")
+                }
             }
         }
     }
     
     @IBAction func SignOutButton(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+            performSegue(withIdentifier: "fromAccountToLogin", sender: self)
+        } catch let signOutError as NSError {
+          print ("ERROR: SIGN OUT: %@", signOutError)
+        }
     }
     
     var data = [Item]()
@@ -96,10 +106,7 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
             USerEmailTextField.text = user.email
         } else {
             print("-- AUTH: user not logged in")
-            
-            // Create a new variable to store the instance of PlayerTableViewController
-//            let destinationVC:AddItemViewController = segue.destination as! AddItemViewController
-//            destinationVC.isEditingMode = true
+            performSegue(withIdentifier: "fromAccountToLogin", sender: self)
         }
     }
     /*
