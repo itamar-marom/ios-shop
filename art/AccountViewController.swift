@@ -6,18 +6,50 @@
 //
 
 import UIKit
+import Firebase
 
 class AccountViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     @IBOutlet weak var trashBtn: UIBarButtonItem!
     @IBOutlet weak var UserNameLabel: UILabel!
     
     @IBOutlet weak var UserNameTextField: UITextField!
     @IBOutlet weak var USerEmailTextField: UITextField!
-    @IBOutlet weak var UserPhoneTextField: UITextField!
     @IBOutlet weak var UserPasswordTextField: UITextField!
     
     @IBOutlet weak var ItemsListTableView: UITableView!
+    
+    @IBAction func SaveInfoButton(_ sender: Any) {
+        
+        print("ACTION: update information:")
+        
+        let newName = UserNameTextField.text
+        let newEmail = USerEmailTextField.text
+        let newPassword = UserPasswordTextField.text
+        
+        if newName != "" {
+            print("-- UPDATE: name: " + newName!)
+            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+            changeRequest?.displayName = newName
+            changeRequest?.commitChanges { (error) in
+              print("---- ERROR: name: failed to update")
+            }
+        }
+        
+        if newEmail != "" {
+            print("-- UPDATE: email: " + newEmail! )
+            Auth.auth().currentUser?.updateEmail(to: newEmail!) { (error) in
+                print("---- ERROR: email: failed to update")
+            }
+        }
+        
+        if newPassword != "" {
+            print("-- UPDATE: password: " + newPassword! )
+            Auth.auth().currentUser?.updatePassword(to: newPassword!) { (error) in
+                print("---- ERROR: password: failed to update")
+            }
+        }
+    }
     
     @IBAction func SignOutButton(_ sender: Any) {
     }
@@ -54,6 +86,21 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        let user = Auth.auth().currentUser
+        print("ACTION: authenticating user")
+        if let user = user {
+            print("-- AUTH: User logged in")
+            UserNameLabel.text = user.displayName
+            UserNameTextField.text = user.displayName
+            USerEmailTextField.text = user.email
+        } else {
+            print("-- AUTH: user not logged in")
+            
+            // Create a new variable to store the instance of PlayerTableViewController
+//            let destinationVC:AddItemViewController = segue.destination as! AddItemViewController
+//            destinationVC.isEditingMode = true
+        }
     }
     /*
     // MARK: - Navigation
