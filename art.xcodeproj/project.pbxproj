@@ -13,6 +13,8 @@
 		84D70F7B267BAC9200A6ABF5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 84D70F7A267BAC9200A6ABF5 /* Kingfisher */; };
 		AD1F23D1267FB0D900515391 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1F23D0267FB0D900515391 /* AccountViewController.swift */; };
 		AD1F23D3267FB39D00515391 /* AccountItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1F23D2267FB39D00515391 /* AccountItemTableViewCell.swift */; };
+		AD1F23D526811F4D00515391 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1F23D426811F4D00515391 /* LoginViewController.swift */; };
+		AD1F23D726811F8100515391 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1F23D626811F8100515391 /* RegisterViewController.swift */; };
 		AD53DE87266F560100AA81E3 /* ModelFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD53DE86266F560100AA81E3 /* ModelFirebase.swift */; };
 		ADA0CFE7266EB72A00F1F958 /* ItemModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ADA0CFE5266EB72A00F1F958 /* ItemModel.xcdatamodeld */; };
 		ADA0CFEA266EB75A00F1F958 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA0CFE8266EB75A00F1F958 /* Item+CoreDataClass.swift */; };
@@ -61,6 +63,8 @@
 		9C22B8A8E5DC4BE679A84102 /* Pods-artTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-artTests.release.xcconfig"; path = "Target Support Files/Pods-artTests/Pods-artTests.release.xcconfig"; sourceTree = "<group>"; };
 		AD1F23D0267FB0D900515391 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		AD1F23D2267FB39D00515391 /* AccountItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountItemTableViewCell.swift; sourceTree = "<group>"; };
+		AD1F23D426811F4D00515391 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		AD1F23D626811F8100515391 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		AD53DE86266F560100AA81E3 /* ModelFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFirebase.swift; sourceTree = "<group>"; };
 		ADA0CFE6266EB72A00F1F958 /* ItemModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ItemModel.xcdatamodel; sourceTree = "<group>"; };
 		ADA0CFE8266EB75A00F1F958 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 				AD1F23D0267FB0D900515391 /* AccountViewController.swift */,
 				AD1F23D2267FB39D00515391 /* AccountItemTableViewCell.swift */,
 				84998A6D26810DDB009084B9 /* ViewItemViewController.swift */,
+				AD1F23D426811F4D00515391 /* LoginViewController.swift */,
+				AD1F23D626811F8100515391 /* RegisterViewController.swift */,
 			);
 			path = art;
 			sourceTree = "<group>";
@@ -465,6 +471,7 @@
 				ADBE3CDA266E9F02009C89BD /* ViewController.swift in Sources */,
 				ADBE3CD6266E9F02009C89BD /* AppDelegate.swift in Sources */,
 				AD1F23D1267FB0D900515391 /* AccountViewController.swift in Sources */,
+				AD1F23D526811F4D00515391 /* LoginViewController.swift in Sources */,
 				ADBE3D13266EA2EF009C89BD /* ShopViewController.swift in Sources */,
 				ADA0CFEA266EB75A00F1F958 /* Item+CoreDataClass.swift in Sources */,
 				84998A6E26810DDB009084B9 /* ViewItemViewController.swift in Sources */,
@@ -473,6 +480,7 @@
 				ADBE3CD8266E9F02009C89BD /* SceneDelegate.swift in Sources */,
 				AD1F23D3267FB39D00515391 /* AccountItemTableViewCell.swift in Sources */,
 				ADBE3D15266EA5A4009C89BD /* ShopListTableViewCell.swift in Sources */,
+				AD1F23D726811F8100515391 /* RegisterViewController.swift in Sources */,
 				ADBE3CE0266E9F02009C89BD /* art.xcdatamodeld in Sources */,
 				ADA0CFE7266EB72A00F1F958 /* ItemModel.xcdatamodeld in Sources */,
 				ADBE3D11266EA27B009C89BD /* Model.swift in Sources */,

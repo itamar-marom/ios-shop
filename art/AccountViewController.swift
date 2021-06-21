@@ -6,20 +6,66 @@
 //
 
 import UIKit
+import Firebase
 
 class AccountViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     @IBOutlet weak var trashBtn: UIBarButtonItem!
     @IBOutlet weak var UserNameLabel: UILabel!
     
     @IBOutlet weak var UserNameTextField: UITextField!
     @IBOutlet weak var USerEmailTextField: UITextField!
-    @IBOutlet weak var UserPhoneTextField: UITextField!
     @IBOutlet weak var UserPasswordTextField: UITextField!
     
     @IBOutlet weak var ItemsListTableView: UITableView!
     
+    @IBAction func noType(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
+    @IBAction func SaveInfoButton(_ sender: Any) {
+        
+        print("ACTION: update information:")
+        
+        let user = Auth.auth().currentUser
+        
+        let newName = UserNameTextField.text
+        let newEmail = USerEmailTextField.text
+        let newPassword = UserPasswordTextField.text
+        
+        if (newName != "") && (newName != user?.displayName) {
+            print("-- UPDATE: name: " + newName!)
+            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+            changeRequest?.displayName = newName
+            changeRequest?.commitChanges { (error) in
+              print("---- ERROR: name: failed to update")
+            }
+        }
+        
+        if (newEmail != "") && (newEmail != user?.email) {
+            print("-- UPDATE: email: " + newEmail! )
+            Auth.auth().currentUser?.updateEmail(to: newEmail!) { (error) in
+                print("---- ERROR: email: failed to update")
+            }
+        }
+        
+        if (newPassword != "") {
+            print("-- UPDATE: password: " + newPassword! )
+            Auth.auth().currentUser?.updatePassword(to: newPassword!) { (error) in
+                if let error = error {
+                    print("---- ERROR: password: failed to update \(error)")
+                }
+            }
+        }
+    }
+    
     @IBAction func SignOutButton(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+            performSegue(withIdentifier: "fromAccountToLogin", sender: self)
+        } catch let signOutError as NSError {
+          print ("ERROR: SIGN OUT: %@", signOutError)
+        }
     }
     
     var data = [Item]()
@@ -54,6 +100,18 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        let user = Auth.auth().currentUser
+        print("ACTION: authenticating user")
+        if let user = user {
+            print("-- AUTH: User logged in")
+            UserNameLabel.text = user.displayName
+            UserNameTextField.attributedPlaceholder = NSAttributedString(string: user.displayName!)
+            USerEmailTextField.attributedPlaceholder = NSAttributedString(string: user.email!)
+        } else {
+            print("-- AUTH: user not logged in")
+            performSegue(withIdentifier: "fromAccountToLogin", sender: self)
+        }
     }
     /*
     // MARK: - Navigation
