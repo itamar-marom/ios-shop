@@ -19,12 +19,14 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var ItemsListTableView: UITableView!
     
+    @IBOutlet weak var progressIcon: UIActivityIndicatorView!
+    
     @IBAction func noType(_ sender: Any) {
         view.endEditing(true)
     }
     
     @IBAction func SaveInfoButton(_ sender: Any) {
-        
+        view.endEditing(true)
         print("ACTION: update information:")
         
         let user = Auth.auth().currentUser
@@ -33,19 +35,25 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
         let newEmail = USerEmailTextField.text
         let newPassword = UserPasswordTextField.text
         
+        progressIcon.startAnimating()
+        
         if (newName != "") && (newName != user?.displayName) {
             print("-- UPDATE: name: " + newName!)
             let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
             changeRequest?.displayName = newName
             changeRequest?.commitChanges { (error) in
-              print("---- ERROR: name: failed to update")
+                if let error = error {
+                    print("---- ERROR: name: failed to update: \(error)")
+                }
             }
         }
         
         if (newEmail != "") && (newEmail != user?.email) {
             print("-- UPDATE: email: " + newEmail! )
             Auth.auth().currentUser?.updateEmail(to: newEmail!) { (error) in
-                print("---- ERROR: email: failed to update")
+                if let error = error {
+                    print("---- ERROR: email: failed to update: \(error)")
+                }
             }
         }
         
@@ -57,15 +65,19 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
                 }
             }
         }
+        
+        progressIcon.stopAnimating()
     }
     
     @IBAction func SignOutButton(_ sender: Any) {
+        progressIcon.startAnimating()
         do {
             try Auth.auth().signOut()
             performSegue(withIdentifier: "fromAccountToLogin", sender: self)
         } catch let signOutError as NSError {
           print ("ERROR: SIGN OUT: %@", signOutError)
         }
+        progressIcon.stopAnimating()
     }
     
     var data = [Item]()
@@ -112,6 +124,8 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
             print("-- AUTH: user not logged in")
             performSegue(withIdentifier: "fromAccountToLogin", sender: self)
         }
+        
+        progressIcon.hidesWhenStopped = true
     }
     /*
     // MARK: - Navigation

@@ -14,14 +14,18 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var userPassword: UITextField!
     
+    @IBOutlet weak var progressIcon: UIActivityIndicatorView!
+    
     @IBAction func noType(_ sender: Any) {
         view.endEditing(true)
     }
     @IBAction func joinButton(_ sender: Any) {
+        view.endEditing(true)
         print("ACTION: register user:")
         print("-- email: " + userEmail.text!)
         print("-- name: " + userName.text!)
         if (userEmail.text != "") && (userName.text != "") && (userPassword.text != "") {
+            progressIcon.startAnimating()
             Auth.auth().createUser(withEmail: userEmail.text!, password: userPassword.text!) { authResult, error in
                 if let error = error {
                     print("---- ERROR: REGISTER: \(error)")
@@ -30,11 +34,14 @@ class RegisterViewController: UIViewController {
                     let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                     changeRequest?.displayName = self.userName.text
                     changeRequest?.commitChanges { (error) in
-                      print("---- ERROR: name: failed to update")
+                        if let error = error {
+                            print("---- ERROR: name: failed to update: \(error)")
+                        }
                     }
                     self.navigationController?.popViewController(animated: true)
                 }
             }
+            progressIcon.stopAnimating()
         } else {
             print("---- ERROR: REGISTER: some information is missing")
         }
@@ -42,7 +49,7 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        progressIcon.hidesWhenStopped = true
         // Do any additional setup after loading the view.
     }
     

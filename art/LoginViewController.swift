@@ -13,14 +13,18 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userEmail: UITextField!
     @IBOutlet weak var userPassword: UITextField!
     
+    @IBOutlet weak var processIcon: UIActivityIndicatorView!
+    
     @IBAction func noType(_ sender: Any) {
         view.endEditing(true)
     }
     
     @IBAction func loginButton(_ sender: Any) {
+        view.endEditing(true)
         print("ACTION: login user:")
         print("-- email: " + userEmail.text!)
         if (userEmail.text != "") && (userPassword.text != "") {
+            processIcon.startAnimating()
             Auth.auth().signIn(withEmail: userEmail.text!, password: userPassword.text!) { [weak self] authResult, error in
             guard let strongSelf = self else { return }
                 if let error = error {
@@ -33,11 +37,14 @@ class LoginViewController: UIViewController {
         } else {
             print("---- ERROR: REGISTER: some information is missing")
         }
+        
+        processIcon.stopAnimating()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
+        processIcon.hidesWhenStopped = true
         // Do any additional setup after loading the view.
     }
     
