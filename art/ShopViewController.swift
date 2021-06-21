@@ -85,17 +85,6 @@ class ShopViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return trashFlag
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete  {
-            let i = indexPath.row
-            Model.instance.delete(item: data[i]){
-                let alert = UIAlertController(title: "Success", message: "item Deleted!", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: { action in}))
-                self.present(alert, animated: true, completion: nil)
-            }
-        }
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "viewItemSegue") {
             let selectedIndex = itemsList.indexPath(for: sender as! UITableViewCell)
