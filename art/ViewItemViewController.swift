@@ -25,6 +25,7 @@ class ViewItemViewController: UIViewController {
     var itemPrice:String?
     var itemSize:String?
     var itemEmail:String?
+    var userId:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +54,9 @@ class ViewItemViewController: UIViewController {
         print("viewItemViewController: ACTION: authenticating user")
         if let user = user {
             print("viewItemViewController: -- AUTH: User logged in")
-            if (itemEmail != user.email) {
+            print("USERID: \(userId)")
+            print("LOGGEDID: \(user.uid)")
+            if (userId != user.uid) {
                 editButton.isHidden = true
             }
             
@@ -74,7 +77,7 @@ class ViewItemViewController: UIViewController {
             destinationVC.editItemPrice = price.text ?? ""
             destinationVC.editItemSize = size.text ?? ""
             destinationVC.editedImage = imageUrl ?? ""
-            destinationVC.editedItemUserEmail = itemEmail ?? ""
+            destinationVC.UserEmailLogged = itemEmail ?? ""
         }
     }
 

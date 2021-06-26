@@ -38,6 +38,13 @@ class AccountViewController: UIViewController {
         
         progressIcon.startAnimating()
         
+        if (newName == "") && (newEmail == "") && (newPassword == "") {
+            let alert = UIAlertController(title: "ERROR", message: "Nothing to update", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: { action in}))
+            self.present(alert, animated: true, completion: nil)
+            isAlert = true
+        }
+        
         if (newName != "") && (newName != user?.displayName) {
             print("-- UPDATE: name: " + newName!)
             let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()

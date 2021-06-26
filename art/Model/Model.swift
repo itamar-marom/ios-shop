@@ -97,7 +97,7 @@ class Model {
         return nil
     }
     
-    func saveImage(image:UIImage, callback:@escaping (String)->Void){
-        ModelFirebase.saveImage(image: image, callback: callback)
+    func saveImage(itemId: String, image:UIImage, callback:@escaping (String)->Void){
+        ModelFirebase.saveImage(itemId: itemId, image: image, callback: callback)
     }
 }

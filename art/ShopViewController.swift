@@ -98,7 +98,7 @@ class ShopViewController: UIViewController, UITableViewDataSource, UITableViewDe
             destinationVC.itemSize = itemSelected.size ?? ""
             destinationVC.itemEmail = itemSelected.email ?? ""
             destinationVC.imageUrl = itemSelected.image ?? ""
-            
+            destinationVC.userId = itemSelected.userId ?? ""
         }
     }
 }

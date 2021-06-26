@@ -32,14 +32,18 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate &
     var editItemPrice:String = ""
     var editedImage:String = ""
     var isEditingMode:Bool = false
-    var editedItemUserId:String = ""
-    var editedItemUserEmail:String = ""
     
     var newImage: UIImage?
     
     @IBAction func addItemClick(_ sender: Any) {
         if self.image.image != nil{
-            Model.instance.saveImage(image: self.image.image!) { (url) in
+            var imgId = ""
+            if (isEditingMode) {
+                imgId = editItemId
+            } else {
+                imgId = itemId.text ?? "NOT FOUND"
+            }
+            Model.instance.saveImage(itemId: imgId ,image: self.image.image!) { (url) in
                 self.saveItem(url: url)
             }
         }else{
@@ -50,7 +54,7 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate &
     
     func saveItem(url:String) {
         if (isEditingMode){
-            let item = Item.create(json: ["id": editItemId, "name": itemName.text!, "size": itemSize.text!, "price": itemPrice.text!, "image": url, "userId": editedItemUserId, "email": editedItemUserEmail])!
+            let item = Item.create(json: ["id": editItemId, "name": itemName.text!, "size": itemSize.text!, "price": itemPrice.text!, "image": url, "userId": UserIdLogged, "email": UserEmailLogged])!
             Model.instance.add(item: item){
                 self.navigationController?.popToRootViewController(animated: true)
             }

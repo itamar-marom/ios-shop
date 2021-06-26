@@ -96,11 +96,11 @@ class ModelFirebase {
         return nil
     }
     
-    static func saveImage(image:UIImage, callback:@escaping(String)->Void){
+    static func saveImage(itemId: String, image:UIImage, callback:@escaping(String)->Void){
         let storageRef = Storage.storage().reference(forURL:
                                                         "gs://art-ios-27733.appspot.com/pic")
         let data = image.jpegData(compressionQuality: 0.8)
-        let imageRef = storageRef.child("imageName")
+        let imageRef = storageRef.child(itemId)
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
         imageRef.putData(data!, metadata: metadata) { (metadata, error) in

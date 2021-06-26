@@ -108,6 +108,7 @@ class MyItemsViewController: UIViewController, UITableViewDataSource, UITableVie
                 let alert = UIAlertController(title: "Success", message: "item Deleted!", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: { action in}))
                 self.present(alert, animated: true, completion: nil)
+                self.reloadData()
             }
         }
     }
@@ -125,7 +126,7 @@ class MyItemsViewController: UIViewController, UITableViewDataSource, UITableVie
             destinationVC.itemSize = itemSelected.size ?? ""
             destinationVC.itemEmail = itemSelected.email ?? ""
             destinationVC.imageUrl = itemSelected.image ?? ""
-            
+            destinationVC.userId = itemSelected.userId ?? ""
         }
     }
 }
