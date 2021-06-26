@@ -44,7 +44,8 @@ class RegisterViewController: UIViewController {
                             self.present(alert, animated: true, completion: nil)
                         }
                     }
-                    self.navigationController?.popViewController(animated: true)
+//                    self.navigationController?.popViewController(animated: true)
+                    self.navigationController?.popToRootViewController(animated: true)
                 }
             }
             progressIcon.stopAnimating()

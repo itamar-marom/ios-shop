@@ -21,6 +21,8 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var progressIcon: UIActivityIndicatorView!
     
+    var UserIdLogged:String = "NO USER"
+    
     @IBAction func noType(_ sender: Any) {
         view.endEditing(true)
     }
@@ -132,7 +134,7 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
         Model.instance.getAllItems() { items in
             var userItems = [Item]()
             for item in items {
-                if item.userId == "MKT5oltiJWTPUrEcdB9Wu4jkvw73" {
+                if item.userId == self.UserIdLogged {
                     userItems.append(item)
                 }
             }
@@ -149,8 +151,9 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
         if let user = user {
             print("-- AUTH: User logged in")
             UserNameLabel.text = user.displayName
-            UserNameTextField.attributedPlaceholder = NSAttributedString(string: user.displayName!)
+            UserNameTextField.attributedPlaceholder = NSAttributedString(string: user.displayName ?? "")
             USerEmailTextField.attributedPlaceholder = NSAttributedString(string: user.email!)
+            UserIdLogged = user.uid
         } else {
             print("-- AUTH: user not logged in")
             performSegue(withIdentifier: "fromAccountToLogin", sender: self)

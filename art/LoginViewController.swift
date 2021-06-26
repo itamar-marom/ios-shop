@@ -54,6 +54,15 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        let user = Auth.auth().currentUser
+        print("ACTION: authenticating user")
+        if let user = user {
+            print("-- AUTH: User logged in")
+            navigationController?.popViewController(animated: true)
+        }
+    }
+    
 
     /*
     // MARK: - Navigation

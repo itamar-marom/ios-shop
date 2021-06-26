@@ -19,6 +19,8 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate &
     @IBOutlet weak var craeteEditBtn: UIButton!
     @IBOutlet weak var image: UIImageView!
     
+    var UserIdLogged:String = "NO USER"
+    var UserEmailLogged:String = "NO USER"
     
     @IBAction func noType(_ sender: Any) {
         view.endEditing(true)
@@ -32,10 +34,6 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate &
     var isEditingMode:Bool = false
     var editedItemUserId:String = ""
     var editedItemUserEmail:String = ""
-    
-    // TODO: Get the logged user's email and ID
-    var UserIdLogged:String = "MKT5oltiJWTPUrEcdB9Wu4jkvw73"
-    var UserEmailLogged:String = "admin@gmail.com"
     
     var newImage: UIImage?
     
@@ -87,11 +85,14 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate &
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let user = Auth.auth().currentUser
-        print("ACTION: authenticating user")
+        print("addItemVireController: ACTION: authenticating user")
+        
         if let user = user {
-            print("-- AUTH: User logged in")
+            print("addItemVireController: -- AUTH: User logged in")
+            UserIdLogged = user.uid
+            UserEmailLogged = user.email!
         } else {
-            print("-- AUTH: user not logged in")
+            print("addItemVireController: -- AUTH: user not logged in")
             performSegue(withIdentifier: "fromCreateToLogin", sender: self)
         }
     }
