@@ -180,7 +180,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NtB-mp-F3z">
-                                <rect key="frame" x="183.5" y="128" width="105" height="21.5"/>
+                                <rect key="frame" x="173.5" y="128" width="105" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -253,7 +253,7 @@
                             <constraint firstItem="zbL-L2-kah" firstAttribute="top" secondItem="y78-PK-kDn" secondAttribute="bottom" constant="40" id="uHo-WR-p3C"/>
                             <constraint firstItem="RhI-NA-kCr" firstAttribute="top" secondItem="NtB-mp-F3z" secondAttribute="bottom" constant="60" id="uSm-Kf-yqS"/>
                             <constraint firstItem="4b2-jF-SDO" firstAttribute="trailing" secondItem="y78-PK-kDn" secondAttribute="trailing" constant="30" id="x6e-3y-009"/>
-                            <constraint firstItem="NtB-mp-F3z" firstAttribute="leading" secondItem="CWS-Rd-zuC" secondAttribute="trailing" constant="20" id="xy0-47-zJY"/>
+                            <constraint firstItem="NtB-mp-F3z" firstAttribute="leading" secondItem="CWS-Rd-zuC" secondAttribute="trailing" constant="10" id="xy0-47-zJY"/>
                             <constraint firstItem="4b2-jF-SDO" firstAttribute="trailing" secondItem="jIC-x1-zer" secondAttribute="trailing" constant="30" id="zWD-fb-4on"/>
                             <constraint firstItem="CWS-Rd-zuC" firstAttribute="leading" secondItem="4b2-jF-SDO" secondAttribute="leading" constant="120" id="zYE-X3-XPG"/>
                         </constraints>

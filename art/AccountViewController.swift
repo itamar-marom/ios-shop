@@ -115,9 +115,19 @@ class AccountViewController: UIViewController {
         let user = Auth.auth().currentUser
         print("ACTION: authenticating user")
         if let user = user {
+            
+            var name = ""
+            
+            while (name == "") {
+                let user = Auth.auth().currentUser
+                if let user = user {
+                    name = user.displayName ?? ""
+                }
+            }
+            
             print("-- AUTH: User logged in")
-            UserNameLabel.text = user.displayName
-            UserNameTextField.attributedPlaceholder = NSAttributedString(string: user.displayName ?? "")
+            UserNameLabel.text = name
+            UserNameTextField.attributedPlaceholder = NSAttributedString(string: name)
             USerEmailTextField.attributedPlaceholder = NSAttributedString(string: user.email!)
             UserIdLogged = user.uid
         } else {
