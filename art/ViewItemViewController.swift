@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import Firebase
 
 class ViewItemViewController: UIViewController {
     
@@ -15,6 +16,8 @@ class ViewItemViewController: UIViewController {
     @IBOutlet weak var size: UILabel!
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var image: UIImageView!
+    
+    @IBOutlet weak var editButton: UIButton!
     
     var itemId:String?
     var imageUrl:String?
@@ -25,6 +28,7 @@ class ViewItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if let text = itemName {
             name.text = itemName
         }
@@ -40,6 +44,23 @@ class ViewItemViewController: UIViewController {
         }
         image.kf.setImage(with: URL(string: imageUrl ?? ""))
 //        image = UIImageView(image: UIImage(named: "tray"))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let user = Auth.auth().currentUser
+        print("viewItemViewController: ACTION: authenticating user")
+        if let user = user {
+            print("viewItemViewController: -- AUTH: User logged in")
+            if (itemEmail != user.email) {
+                editButton.isHidden = true
+            }
+            
+        } else {
+            print("viewItemViewController: -- AUTH: user not logged in")
+            editButton.isHidden = true
+        }
     }
 
     
