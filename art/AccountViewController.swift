@@ -58,6 +58,9 @@ class AccountViewController: UIViewController {
                     isAlert = true
                 }
             }
+            
+            UserNameLabel.text = newName
+            UserNameTextField.attributedPlaceholder = NSAttributedString(string: newName!)
         }
         
         if (newEmail != "") && (newEmail != user?.email) {
@@ -73,6 +76,7 @@ class AccountViewController: UIViewController {
                     }
                 }
             }
+            USerEmailTextField.attributedPlaceholder = NSAttributedString(string: newEmail!)
         }
         
         if (newPassword != "") {
@@ -95,6 +99,13 @@ class AccountViewController: UIViewController {
         UserPasswordTextField.text = ""
         
         progressIcon.stopAnimating()
+        
+        if (!isAlert) {
+            let alert = UIAlertController(title: "SUCCESS", message: "Your Information have been updated.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: { action in}))
+            self.present(alert, animated: true, completion: nil)
+            isAlert = true
+        }
     }
     
     @IBAction func SignOutButton(_ sender: Any) {
