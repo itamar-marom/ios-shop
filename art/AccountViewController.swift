@@ -172,7 +172,6 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
     */
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(data)
         return data.count
     }
     

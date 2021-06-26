@@ -32,7 +32,7 @@ class ViewItemViewController: UIViewController {
         if let text = itemName {
             name.text = itemName
         }
-        print(name.text)
+//        print(name.text)
         if let text = itemPrice {
             price.text = itemPrice
         }

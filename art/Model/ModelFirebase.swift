@@ -109,7 +109,7 @@ class ModelFirebase {
                     callback("")
                     return
                 }
-                print("url: \(downloadURL)")
+//                print("url: \(downloadURL)")
                 callback(downloadURL.absoluteString)
             }
         }

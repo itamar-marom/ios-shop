@@ -57,7 +57,7 @@ class ShopViewController: UIViewController, UITableViewDataSource, UITableViewDe
     */
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(data)
+//        print(data)
         return data.count
     }
     
