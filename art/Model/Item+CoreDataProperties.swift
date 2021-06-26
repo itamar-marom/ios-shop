@@ -23,5 +23,7 @@ extension Item {
     @NSManaged public var image: String?
     @NSManaged public var lastUpdated: Int64
     @NSManaged public var delFlag: Bool
+    @NSManaged public var userId: String?
+    @NSManaged public var email: String?
 
 } 

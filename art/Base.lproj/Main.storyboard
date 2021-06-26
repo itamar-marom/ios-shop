@@ -99,6 +99,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="491-8v-xtU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="E06-G8-4L4" firstAttribute="leading" secondItem="491-8v-xtU" secondAttribute="leading" constant="30" id="18Q-r3-jax"/>
                             <constraint firstItem="P95-Q9-Wrb" firstAttribute="leading" secondItem="491-8v-xtU" secondAttribute="leading" constant="10" id="1BG-lK-G12"/>
@@ -122,6 +123,9 @@
                             <constraint firstItem="491-8v-xtU" firstAttribute="trailing" secondItem="JMp-Pd-5mT" secondAttribute="trailing" constant="30" id="wxg-S8-Q32"/>
                             <constraint firstItem="1j1-bG-nze" firstAttribute="top" secondItem="E06-G8-4L4" secondAttribute="bottom" constant="30" id="xmu-P4-lsX"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="zpd-7N-TPX" appends="YES" id="LZ7-VQ-ygW"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Create" id="Hsn-cb-ySu"/>
                     <connections>
@@ -136,6 +140,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h6R-ro-mbb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="zpd-7N-TPX">
+                    <connections>
+                        <action selector="noType:" destination="7sv-vf-3Sk" id="74S-X5-4V8"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="590" y="311"/>
         </scene>
@@ -244,7 +253,7 @@
                                             <outlet property="ItemImage" destination="aAh-Is-Qfz" id="W2c-qZ-mOI"/>
                                             <outlet property="ItemName" destination="Jyd-UP-0c7" id="15i-6N-3SE"/>
                                             <outlet property="ItemPrice" destination="s36-Bm-Pji" id="Q31-2d-pyp"/>
-                                            <segue destination="7sv-vf-3Sk" kind="show" id="c1D-6L-Imw"/>
+                                            <segue destination="Apc-Sg-imv" kind="show" identifier="fromAccountToView" id="4IV-sz-WOd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -729,8 +738,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="4IV-sz-WOd"/>
         <segue reference="egm-67-LSf"/>
-        <segue reference="c1D-6L-Imw"/>
+        <segue reference="OQD-SZ-0Yx"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bag" catalog="system" width="128" height="128"/>

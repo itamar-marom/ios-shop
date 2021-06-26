@@ -19,12 +19,23 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate &
     @IBOutlet weak var craeteEditBtn: UIButton!
     @IBOutlet weak var image: UIImageView!
     
+    
+    @IBAction func noType(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
     var editItemId:String = ""
     var editItemName:String = ""
     var editItemSize:String = ""
     var editItemPrice:String = ""
     var editedImage:String = ""
     var isEditingMode:Bool = false
+    var editedItemUserId:String = ""
+    var editedItemUserEmail:String = ""
+    
+    // TODO: Get the logged user's email and ID
+    var UserIdLogged:String = "MKT5oltiJWTPUrEcdB9Wu4jkvw73"
+    var UserEmailLogged:String = "admin@gmail.com"
     
     var newImage: UIImage?
     
@@ -41,12 +52,12 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate &
     
     func saveItem(url:String) {
         if (isEditingMode){
-            let item = Item.create(json: ["id": editItemId, "name": itemName.text!, "size": itemSize.text!, "price": itemPrice.text!, "image": url])!
+            let item = Item.create(json: ["id": editItemId, "name": itemName.text!, "size": itemSize.text!, "price": itemPrice.text!, "image": url, "userId": editedItemUserId, "email": editedItemUserEmail])!
             Model.instance.add(item: item){
                 self.navigationController?.popToRootViewController(animated: true)
             }
         } else {
-            let item = Item.create(json: ["id": itemId.text, "name": itemName.text!, "size": itemSize.text!, "price": itemPrice.text!, "image": url])!
+            let item = Item.create(json: ["id": itemId.text, "name": itemName.text!, "size": itemSize.text!, "price": itemPrice.text!, "image": url, "userId": UserIdLogged, "email": UserEmailLogged])!
             Model.instance.add(item: item){
                 self.initForm()
                 let alert = UIAlertController(title: "Success", message: "item Saved!", preferredStyle: UIAlertController.Style.alert)

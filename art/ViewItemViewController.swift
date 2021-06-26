@@ -53,7 +53,7 @@ class ViewItemViewController: UIViewController {
             destinationVC.editItemPrice = price.text ?? ""
             destinationVC.editItemSize = size.text ?? ""
             destinationVC.editedImage = imageUrl ?? ""
-            
+            destinationVC.editedItemUserEmail = itemEmail ?? ""
         }
     }
 

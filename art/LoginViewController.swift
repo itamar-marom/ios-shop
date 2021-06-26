@@ -29,6 +29,9 @@ class LoginViewController: UIViewController {
             guard let strongSelf = self else { return }
                 if let error = error {
                     print("---- ERROR: LOGIN: \(error)")
+                    let alert = UIAlertController(title: "ERROR", message: "Name or password is incorrect, please try again", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: { action in}))
+                    strongSelf.present(alert, animated: true, completion: nil)
                 } else {
                     print("---- LOGIN: SUCCESS: " + strongSelf.userEmail.text!)
                     strongSelf.navigationController?.popViewController(animated: true)
@@ -36,6 +39,9 @@ class LoginViewController: UIViewController {
             }
         } else {
             print("---- ERROR: REGISTER: some information is missing")
+            let alert = UIAlertController(title: "ERROR", message: "Some information is missing", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: { action in}))
+            self.present(alert, animated: true, completion: nil)
         }
         
         processIcon.stopAnimating()

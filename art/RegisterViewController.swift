@@ -29,6 +29,9 @@ class RegisterViewController: UIViewController {
             Auth.auth().createUser(withEmail: userEmail.text!, password: userPassword.text!) { authResult, error in
                 if let error = error {
                     print("---- ERROR: REGISTER: \(error)")
+                    let alert = UIAlertController(title: "ERROR", message: "Something went wrong... please make sure your email is valid and your password is longer than 6 characters", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: { action in}))
+                    self.present(alert, animated: true, completion: nil)
                 } else {
                     print("---- REGISTER: SUCCESS: " + self.userEmail.text!)
                     let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
@@ -36,6 +39,9 @@ class RegisterViewController: UIViewController {
                     changeRequest?.commitChanges { (error) in
                         if let error = error {
                             print("---- ERROR: name: failed to update: \(error)")
+                            let alert = UIAlertController(title: "ERROR", message: "Something went wrong... please try again", preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: { action in}))
+                            self.present(alert, animated: true, completion: nil)
                         }
                     }
                     self.navigationController?.popViewController(animated: true)
@@ -44,6 +50,9 @@ class RegisterViewController: UIViewController {
             progressIcon.stopAnimating()
         } else {
             print("---- ERROR: REGISTER: some information is missing")
+            let alert = UIAlertController(title: "ERROR", message: "Someinformation is missing. please fill entire form.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: { action in}))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     

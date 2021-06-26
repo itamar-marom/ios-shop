@@ -35,6 +35,8 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
         let newEmail = USerEmailTextField.text
         let newPassword = UserPasswordTextField.text
         
+        var isAlert = false
+        
         progressIcon.startAnimating()
         
         if (newName != "") && (newName != user?.displayName) {
@@ -44,6 +46,10 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
             changeRequest?.commitChanges { (error) in
                 if let error = error {
                     print("---- ERROR: name: failed to update: \(error)")
+                    let alert = UIAlertController(title: "ERROR", message: "Couldn't save your name", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: { action in}))
+                    self.present(alert, animated: true, completion: nil)
+                    isAlert = true
                 }
             }
         }
@@ -53,6 +59,12 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
             Auth.auth().currentUser?.updateEmail(to: newEmail!) { (error) in
                 if let error = error {
                     print("---- ERROR: email: failed to update: \(error)")
+                    if (!isAlert) {
+                        let alert = UIAlertController(title: "ERROR", message: "Couldn't save your email, make sure it's valid", preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: { action in}))
+                        self.present(alert, animated: true, completion: nil)
+                        isAlert = true
+                    }
                 }
             }
         }
@@ -62,9 +74,19 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
             Auth.auth().currentUser?.updatePassword(to: newPassword!) { (error) in
                 if let error = error {
                     print("---- ERROR: password: failed to update \(error)")
+                    if (!isAlert) {
+                        let alert = UIAlertController(title: "ERROR", message: "Couldn't save your password, make sure is larger than 6 characters", preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: { action in}))
+                        self.present(alert, animated: true, completion: nil)
+                        isAlert = true
+                    }
                 }
             }
         }
+        
+        UserNameTextField.text = ""
+        USerEmailTextField.text = ""
+        UserPasswordTextField.text = ""
         
         progressIcon.stopAnimating()
     }
@@ -75,7 +97,10 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
             try Auth.auth().signOut()
             performSegue(withIdentifier: "fromAccountToLogin", sender: self)
         } catch let signOutError as NSError {
-          print ("ERROR: SIGN OUT: %@", signOutError)
+            print ("ERROR: SIGN OUT: %@", signOutError)
+            let alert = UIAlertController(title: "ERROR", message: "Couldn't sign you out, please try again", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: { action in}))
+            self.present(alert, animated: true, completion: nil)
         }
         progressIcon.stopAnimating()
     }
@@ -105,7 +130,13 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func reloadData() {
         Model.instance.getAllItems() { items in
-            self.data = items
+            var userItems = [Item]()
+            for item in items {
+                if item.userId == "MKT5oltiJWTPUrEcdB9Wu4jkvw73" {
+                    userItems.append(item)
+                }
+            }
+            self.data = userItems
             self.ItemsListTableView.reloadData()
         }
     }
@@ -173,6 +204,23 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
                 alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: { action in}))
                 self.present(alert, animated: true, completion: nil)
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "fromAccountToView") {
+            let selectedIndex = ItemsListTableView.indexPath(for: sender as! UITableViewCell)
+            let itemSelected = data[selectedIndex?.row ?? 0]
+            
+            // Create a new variable to store the instance of PlayerTableViewController
+            let destinationVC:ViewItemViewController = segue.destination as! ViewItemViewController
+            destinationVC.itemId = itemSelected.id ?? ""
+            destinationVC.itemName = itemSelected.name ?? ""
+            destinationVC.itemPrice = itemSelected.price ?? ""
+            destinationVC.itemSize = itemSelected.size ?? ""
+            destinationVC.itemEmail = itemSelected.email ?? ""
+            destinationVC.imageUrl = itemSelected.image ?? ""
+            
         }
     }
 }

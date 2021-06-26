@@ -14,10 +14,10 @@ import Firebase
 @objc(Item)
 public class Item: NSManagedObject {
     static func create(item:Item)->Item{
-        return create(id: item.id!, name: item.name!, size: item.size!, price: item.price!, image: item.image!,lastUpdated: item.lastUpdated, delFlag: item.delFlag)
+        return create(id: item.id!, name: item.name!, size: item.size!, price: item.price!, image: item.image!,lastUpdated: item.lastUpdated, delFlag: item.delFlag, userId: item.userId!, email: item.email!)
     }
     
-    static func create(id: String, name: String, size:String, price:String, image:String, lastUpdated:Int64, delFlag:Bool)->Item{
+    static func create(id: String, name: String, size:String, price:String, image:String, lastUpdated:Int64, delFlag:Bool, userId:String, email:String)->Item{
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let item = Item(context: context)
         item.id = id
@@ -46,6 +46,8 @@ public class Item: NSManagedObject {
         if let df = json["delFlag"] as? Bool {
             item.delFlag = df
         }
+        item.userId = json["userId"] as? String
+        item.email = json["email"] as? String
         return item
     }
     
@@ -63,6 +65,8 @@ public class Item: NSManagedObject {
         }
         json["lastUpdated"] = FieldValue.serverTimestamp()
         json["delFlag"] = delFlag
+        json["userId"] = userId!
+        json["email"] = email!
         return json
     }
     
