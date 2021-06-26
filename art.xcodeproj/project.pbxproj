@@ -11,6 +11,7 @@
 		73FA3D480DA47A7F16E106BC /* Pods_art_artUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F595D08D358FDB2451A3B6F8 /* Pods_art_artUITests.framework */; };
 		84998A6E26810DDB009084B9 /* ViewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84998A6D26810DDB009084B9 /* ViewItemViewController.swift */; };
 		84D70F7B267BAC9200A6ABF5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 84D70F7A267BAC9200A6ABF5 /* Kingfisher */; };
+		AD0075BE26872E9C0050C566 /* MyItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0075BD26872E9C0050C566 /* MyItemsViewController.swift */; };
 		AD1F23D1267FB0D900515391 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1F23D0267FB0D900515391 /* AccountViewController.swift */; };
 		AD1F23D3267FB39D00515391 /* AccountItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1F23D2267FB39D00515391 /* AccountItemTableViewCell.swift */; };
 		AD1F23D526811F4D00515391 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1F23D426811F4D00515391 /* LoginViewController.swift */; };
@@ -61,6 +62,7 @@
 		7D960F12BE30B7015EB8546D /* Pods_artTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_artTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84998A6D26810DDB009084B9 /* ViewItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewItemViewController.swift; sourceTree = "<group>"; };
 		9C22B8A8E5DC4BE679A84102 /* Pods-artTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-artTests.release.xcconfig"; path = "Target Support Files/Pods-artTests/Pods-artTests.release.xcconfig"; sourceTree = "<group>"; };
+		AD0075BD26872E9C0050C566 /* MyItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItemsViewController.swift; sourceTree = "<group>"; };
 		AD1F23D0267FB0D900515391 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		AD1F23D2267FB39D00515391 /* AccountItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountItemTableViewCell.swift; sourceTree = "<group>"; };
 		AD1F23D426811F4D00515391 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				84998A6D26810DDB009084B9 /* ViewItemViewController.swift */,
 				AD1F23D426811F4D00515391 /* LoginViewController.swift */,
 				AD1F23D626811F8100515391 /* RegisterViewController.swift */,
+				AD0075BD26872E9C0050C566 /* MyItemsViewController.swift */,
 			);
 			path = art;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				AD1F23D1267FB0D900515391 /* AccountViewController.swift in Sources */,
 				AD1F23D526811F4D00515391 /* LoginViewController.swift in Sources */,
 				ADBE3D13266EA2EF009C89BD /* ShopViewController.swift in Sources */,
+				AD0075BE26872E9C0050C566 /* MyItemsViewController.swift in Sources */,
 				ADA0CFEA266EB75A00F1F958 /* Item+CoreDataClass.swift in Sources */,
 				84998A6E26810DDB009084B9 /* ViewItemViewController.swift in Sources */,
 				AD53DE87266F560100AA81E3 /* ModelFirebase.swift in Sources */,
